@@ -1,8 +1,29 @@
+{% load leaflet_tags %}
 <html>
     <head>
         <title>Hello World</title>
-    </head>
+        {% leaflet_js %}
+        {% leaflet_css %}
+		<script type="text/javascript">
+			function map_init_basic (map, options) {
+				L.marker([-8.5564164,125.5699267]).addTo(map);
+			}
+		</script>
+		<style>
+
+			.leaflet-container {  /* all maps */
+				width:  600px;
+				height: 400px;
+			}
+
+			#specialbigmap {
+				height: 800px;
+			}
+
+		</style>
+	</head>
     <body>
         <h1>Mapa Timor-Leste<h1>
+        {% leaflet_map "yourmap" callback="window.map_init_basic"  %}
     </body>
 </html>
